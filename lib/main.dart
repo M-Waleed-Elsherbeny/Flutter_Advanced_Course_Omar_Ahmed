@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/routing/app_route_config.dart';
+import 'package:flutter_advanced_course_omar_ahmed/core/style/colors/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
@@ -8,19 +9,22 @@ void main() {
 
 class DocApp extends StatelessWidget {
   const DocApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(360, 690),
+      designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
       // Use builder only if you need to use library outside ScreenUtilInit context
       builder: (_, child) {
         return MaterialApp.router(
-          title: 'Flutter Demo',
+          title: 'Doc App',
           routerConfig: AppRouteConfig.router,
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primaryColor: AppColors.primaryColorBlue,
+            scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
+          ),
         );
       },
     );
