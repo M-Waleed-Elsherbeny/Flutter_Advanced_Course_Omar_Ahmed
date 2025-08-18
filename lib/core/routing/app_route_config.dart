@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/routing/app_router.dart';
-import 'package:flutter_advanced_course_omar_ahmed/features/onboarding/onboarding_screen.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/onboarding/ui/onboarding_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouteConfig {
