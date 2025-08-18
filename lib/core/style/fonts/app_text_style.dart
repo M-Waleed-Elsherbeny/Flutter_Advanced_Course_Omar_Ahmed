@@ -18,9 +18,23 @@ class AppTextStyle {
     fontSize: 13.sp,
     fontWeight: FontWeight.normal,
   );
+  static TextStyle font14primaryColor400 = TextStyle(
+    color: AppColors.primaryColorBlue,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+    decoration: TextDecoration.underline,
+    decorationColor: AppColors.primaryColorBlue,
+    decorationThickness: 1.5,
+    
+  );
   static TextStyle font16White600 = TextStyle(
     color: AppColors.scaffoldBackgroundColor,
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
+  );
+  static TextStyle font15grey500 = TextStyle(
+    color: AppColors.textFormFieldColor,
+    fontSize: 15.sp,
+    fontWeight: FontWeight.w500,
   );
 }
