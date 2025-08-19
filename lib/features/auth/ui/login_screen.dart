@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_course_omar_ahmed/core/assets/app_assets.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/style/colors/app_colors.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/style/fonts/app_text_style.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/widgets/custom_text_feild.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/widgets/height_spacer.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/widgets/my_custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -78,7 +80,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     TextButton(
                       child: Text(
                         "Forgot Password?",
-                        style: AppTextStyle.font14primaryColor400,
+                        style: AppTextStyle.font13primaryColor400.copyWith(
+                            decoration: TextDecoration.underline,
+                            decorationThickness: 1.5,
+                            decorationColor: AppColors.primaryColorBlue),
                       ),
                       onPressed: () {},
                     ),
@@ -111,7 +116,87 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ],
-                )
+                ),
+                const HeightSpacer(
+                  height: 32,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    InkWell(
+                      onTap: () {},
+                      child: SvgPicture.asset(
+                        AppAssets.google,
+                        width: 40.w,
+                        height: 40.h,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {},
+                      child: SvgPicture.asset(
+                        AppAssets.facebook,
+                        width: 45.w,
+                        height: 45.h,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {},
+                      child: SvgPicture.asset(
+                        AppAssets.apple,
+                        width: 45.w,
+                        height: 45.h,
+                      ),
+                    ),
+                  ],
+                ),
+                const HeightSpacer(
+                  height: 32,
+                ),
+                Center(
+                  child: SizedBox(
+                    width: 280.w,
+                    child: Text.rich(
+                      TextSpan(
+                          text: "By logging, you agree to our ",
+                          style: AppTextStyle.font13Grey400
+                              .copyWith(fontSize: 11.sp),
+                          children: [
+                            TextSpan(
+                                text: " Terms & Conditions",
+                                style: AppTextStyle.font11Black600),
+                            TextSpan(
+                              text: " and ",
+                              style: AppTextStyle.font13Grey400
+                                  .copyWith(fontSize: 11.sp),
+                            ),
+                            TextSpan(
+                                text: " PrivacyPolicy.",
+                                style: AppTextStyle.font11Black600),
+                          ]),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+                const HeightSpacer(height: 24),
+                Center(
+                  child: Text.rich(
+                    TextSpan(
+                        text: "Already have an account yet? ",
+                        style: AppTextStyle.font11Black600
+                            .copyWith(fontWeight: FontWeight.normal),
+                        children: [
+                          TextSpan(
+                              text: "Sign up",
+                              style:
+                                  AppTextStyle.font13primaryColor400.copyWith(
+                                decoration: TextDecoration.underline,
+                                decorationThickness: 1.5,
+                                decorationColor: AppColors.primaryColorBlue,
+                              )),
+                        ]),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
               ],
             ),
           )),

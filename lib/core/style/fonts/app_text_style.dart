@@ -8,6 +8,11 @@ class AppTextStyle {
     fontSize: 24.sp,
     fontWeight: FontWeight.w700,
   );
+  static TextStyle font11Black600 = TextStyle(
+    color: Colors.black,
+    fontSize: 11.sp,
+    fontWeight: FontWeight.w600,
+  );
   static TextStyle font32BoldPrimaryColor = TextStyle(
     color: AppColors.primaryColorBlue,
     fontSize: 32.sp,
@@ -18,14 +23,10 @@ class AppTextStyle {
     fontSize: 13.sp,
     fontWeight: FontWeight.normal,
   );
-  static TextStyle font14primaryColor400 = TextStyle(
+  static TextStyle font13primaryColor400 = TextStyle(
     color: AppColors.primaryColorBlue,
-    fontSize: 14.sp,
+    fontSize: 13.sp,
     fontWeight: FontWeight.w400,
-    decoration: TextDecoration.underline,
-    decorationColor: AppColors.primaryColorBlue,
-    decorationThickness: 1.5,
-    
   );
   static TextStyle font16White600 = TextStyle(
     color: AppColors.scaffoldBackgroundColor,
