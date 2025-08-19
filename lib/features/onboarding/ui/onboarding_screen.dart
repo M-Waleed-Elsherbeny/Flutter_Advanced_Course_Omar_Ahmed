@@ -34,7 +34,7 @@ class OnboardingScreen extends StatelessWidget {
                   ),
                   HeightSpacer(height: 32.h),
                   MyCustomButton(
-                    onPressed: () => context.goNamed(AppRouter.loginScreen),
+                    onPressed: () => context.go(AppRouter.loginScreen),
                     text: "Get Started",
                   ),
                 ],
