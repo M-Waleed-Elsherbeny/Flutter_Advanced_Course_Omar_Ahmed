@@ -1,12 +1,14 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_course_omar_ahmed/core/assets/app_assets.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/style/colors/app_colors.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/style/fonts/app_text_style.dart';
-import 'package:flutter_advanced_course_omar_ahmed/core/widgets/custom_text_feild.dart';
-import 'package:flutter_advanced_course_omar_ahmed/core/widgets/height_spacer.dart';
+import 'package:flutter_advanced_course_omar_ahmed/core/helper/spacer.dart';
+import 'package:flutter_advanced_course_omar_ahmed/core/widgets/custom_text_field.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/widgets/my_custom_button.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/auth/functions/validators.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/auth/widgets/signin_with_social_media.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -16,66 +18,111 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool isPassword = false;
+  bool isCheck = false;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
-        body: SingleChildScrollView(
-          child: SafeArea(
+        body: SafeArea(
+          child: SingleChildScrollView(
               child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.w),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const HeightSpacer(
-                  height: 50,
-                ),
+                verticalSpace(50),
                 Text(
                   "Welcome Back",
                   style: AppTextStyle.font32BoldPrimaryColor,
                 ),
-                const HeightSpacer(
-                  height: 8,
-                ),
+                verticalSpace(8),
                 Text(
                   "We're excited to have you back, can't wait to\nsee what you've been up to since you last\nlogged in.",
                   style: AppTextStyle.font13Grey400.copyWith(fontSize: 14.sp),
                 ),
-                const HeightSpacer(
-                  height: 36,
+                verticalSpace(36),
+                Form(
+                  key: formKey,
+                  child: Column(
+                    children: [
+                      CustomTextField(
+                        controller: emailController,
+                        validator: (email) {
+                          log(email.toString());
+                          if (email!.isEmpty) {
+                            return "Please enter your email";
+                          } if (!isValidEmail(email: email)){
+                            return "Please enter a valid email";
+                          }
+                          return null;
+                        },
+                        labelText: "Email",
+                      ),
+                      verticalSpace(33),
+                      CustomTextField(
+                        controller: passwordController,
+                        validator: (password) {
+                          if (password!.isEmpty) {
+                            return "Please enter your password";
+                          }
+                          if (password.length < 6) {
+                            return "Password must be at least 6 characters";
+                          }
+                          return null;
+                          
+                        },
+                        isPassword: !isPassword,
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            isPassword = !isPassword;
+                            setState(() {});
+                          },
+                          icon: Icon(
+                            isPassword
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: isPassword
+                                ? AppColors.primaryColorBlue
+                                : AppColors.textFormFieldColor,
+                          ),
+                        ),
+                        labelText: "Password",
+                      ),
+                    ],
+                  ),
                 ),
-                const CustomTextField(
-                  labelText: "Email",
-                ),
-                const HeightSpacer(
-                  height: 33,
-                ),
-                const CustomTextField(
-                  labelText: "Password",
-                ),
-                const HeightSpacer(
-                  height: 16,
-                ),
+                verticalSpace(16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Checkbox(
-                          side: BorderSide(
-                              color: AppColors.textFormFieldColor, width: 2.w),
-                          value: false,
-                          onChanged: (value) {},
-                          activeColor: AppColors.primaryColorBlue,
-                          checkColor: Colors.white,
-                          materialTapTargetSize:
-                              MaterialTapTargetSize.shrinkWrap,
-                        ),
-                        Text("Remember me", style: AppTextStyle.font13Grey400),
-                      ],
+                    Checkbox(
+                      side: BorderSide(
+                          color: AppColors.textFormFieldColor, width: 2.w),
+                      value: isCheck,
+                      onChanged: (value) {
+                        isCheck = !isCheck;
+                        setState(() {});
+                      },
+                      activeColor: AppColors.primaryColorBlue,
+                      checkColor: Colors.white,
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     ),
+                    Text("Remember me", style: AppTextStyle.font13Grey400),
                     const Spacer(),
                     TextButton(
                       child: Text(
@@ -89,95 +136,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
-                const HeightSpacer(
-                  height: 33,
-                ),
+                verticalSpace(33),
                 MyCustomButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if(formKey.currentState!.validate()){
+                      log(emailController.text);
+                      log(passwordController.text);
+                    }
+                  },
                   text: "Login",
                 ),
-                const HeightSpacer(
-                  height: 46,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    SizedBox(
-                      width: 100.w,
-                      child: const Divider(
-                        color: AppColors.borderColor,
-                      ),
-                    ),
-                    Text("Or sign in with", style: AppTextStyle.font13Grey400),
-                    SizedBox(
-                      width: 100.w,
-                      child: const Divider(
-                        color: AppColors.borderColor,
-                      ),
-                    ),
-                  ],
-                ),
-                const HeightSpacer(
-                  height: 32,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    InkWell(
-                      onTap: () {},
-                      child: SvgPicture.asset(
-                        AppAssets.google,
-                        width: 40.w,
-                        height: 40.h,
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {},
-                      child: SvgPicture.asset(
-                        AppAssets.facebook,
-                        width: 45.w,
-                        height: 45.h,
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {},
-                      child: SvgPicture.asset(
-                        AppAssets.apple,
-                        width: 45.w,
-                        height: 45.h,
-                      ),
-                    ),
-                  ],
-                ),
-                const HeightSpacer(
-                  height: 32,
-                ),
-                Center(
-                  child: SizedBox(
-                    width: 280.w,
-                    child: Text.rich(
-                      TextSpan(
-                          text: "By logging, you agree to our ",
-                          style: AppTextStyle.font13Grey400
-                              .copyWith(fontSize: 11.sp),
-                          children: [
-                            TextSpan(
-                                text: " Terms & Conditions",
-                                style: AppTextStyle.font11Black600),
-                            TextSpan(
-                              text: " and ",
-                              style: AppTextStyle.font13Grey400
-                                  .copyWith(fontSize: 11.sp),
-                            ),
-                            TextSpan(
-                                text: " PrivacyPolicy.",
-                                style: AppTextStyle.font11Black600),
-                          ]),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-                const HeightSpacer(height: 24),
+                verticalSpace(46),
+                const SignInWithSocialMedia(),
+                verticalSpace(24),
                 Center(
                   child: Text.rich(
                     TextSpan(
