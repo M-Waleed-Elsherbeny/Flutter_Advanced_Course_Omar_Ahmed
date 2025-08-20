@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_course_omar_ahmed/core/di/get_it_config.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/networking/bloc_observer.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/routing/app_route_config.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/style/colors/app_colors.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  setupGetIt();
   Bloc.observer = MyBlocObserver();
   runApp(const DocApp());
 }

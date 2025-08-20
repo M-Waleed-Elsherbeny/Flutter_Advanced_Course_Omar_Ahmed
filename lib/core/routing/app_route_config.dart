@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_course_omar_ahmed/core/di/get_it_config.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/routing/app_router.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/logic/cubit/authentication_cubit.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/auth/ui/login_screen.dart';
@@ -23,7 +24,7 @@ class AppRouteConfig {
         name: AppRouter.loginScreen,
         builder: (BuildContext context, GoRouterState state) {
           return BlocProvider(
-            create: (context) => AuthenticationCubit(),
+            create: (context) => getIt<AuthenticationCubit>(),
             child: const LoginScreen(),
           );
         },

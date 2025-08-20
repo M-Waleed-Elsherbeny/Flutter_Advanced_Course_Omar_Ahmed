@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_course_omar_ahmed/core/di/get_it_config.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/helper/custom_loading.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/helper/custom_snack_bar.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/routing/app_router.dart';
@@ -54,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
         }
       },
       builder: (context, state) {
-        AuthenticationCubit cubit = context.read<AuthenticationCubit>();
+        AuthenticationCubit cubit = getIt<AuthenticationCubit>();
         return GestureDetector(
           onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
           child: Scaffold(

@@ -4,12 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTextStyle {
   static TextStyle font24Black700 = TextStyle(
-    color: Colors.black,
+    color: AppColors.blackColor,
     fontSize: 24.sp,
     fontWeight: FontWeight.w700,
   );
   static TextStyle font11Black600 = TextStyle(
-    color: Colors.black,
+    color: AppColors.blackColor,
     fontSize: 11.sp,
     fontWeight: FontWeight.w600,
   );
@@ -32,6 +32,11 @@ class AppTextStyle {
     color: AppColors.scaffoldBackgroundColor,
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
+  );
+  static TextStyle font18BlackBold = TextStyle(
+    color: AppColors.blackColor,
+    fontSize: 18.sp,
+    fontWeight: FontWeight.bold,
   );
   static TextStyle font15grey500 = TextStyle(
     color: AppColors.textFormFieldColor,

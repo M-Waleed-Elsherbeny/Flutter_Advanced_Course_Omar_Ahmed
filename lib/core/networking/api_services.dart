@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_advanced_course_omar_ahmed/core/networking/dio_handler.dart';
 
 class ApiServices {
-  static Dio? dio = DioHandler.initialDio();
+  Dio? dio;
+  ApiServices(this.dio);
   Future<Response> get({required String endPoint}) async {
     return await dio!.get(endPoint);
   }
