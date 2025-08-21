@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/models/login_model.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/repo/login_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,6 +12,9 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   AuthenticationCubit(this.loginRepo) : super(AuthenticationInitial());
   final LoginRepo loginRepo;
   LoginModel? loginModel;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   Future<void> login({required String email, required String password}) async {
     emit(LoginLoading());
