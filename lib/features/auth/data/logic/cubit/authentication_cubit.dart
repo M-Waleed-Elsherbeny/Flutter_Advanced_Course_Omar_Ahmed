@@ -12,15 +12,23 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   AuthenticationCubit(this.loginRepo) : super(AuthenticationInitial());
   final LoginRepo loginRepo;
   LoginModel? loginModel;
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  bool showPassword = false;
+  final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> signUpFormKey = GlobalKey<FormState>();
+  final TextEditingController userNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
 
-  Future<void> login({required String email, required String password}) async {
+  Future<void> login() async {
     emit(LoginLoading());
     try {
-      Response response =
-          await loginRepo.login(data: {"email": email, "password": password});
+      Response response = await loginRepo.login(data: {
+        "email": emailController.text,
+        "password": passwordController.text,
+      });
       if (response.statusCode == 200) {
         loginModel = LoginModel.fromJson(response.data);
         log(loginModel!.data!.token.toString());

@@ -3,6 +3,7 @@ import 'package:flutter_advanced_course_omar_ahmed/core/di/get_it_config.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/routing/app_router.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/logic/cubit/authentication_cubit.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/auth/ui/login_screen.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/auth/ui/sign_up_screen.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/home/ui/home_screen.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/onboarding/ui/onboarding_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,6 +27,16 @@ class AppRouteConfig {
           return BlocProvider(
             create: (context) => getIt<AuthenticationCubit>(),
             child: const LoginScreen(),
+          );
+        },
+      ),
+      GoRoute(
+        path: AppRouter.signUpScreen,
+        name: AppRouter.signUpScreen,
+        builder: (BuildContext context, GoRouterState state) {
+          return BlocProvider(
+            create: (context) => getIt<AuthenticationCubit>(),
+            child: const SignUpScreen(),
           );
         },
       ),
