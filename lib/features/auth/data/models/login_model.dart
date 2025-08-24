@@ -1,13 +1,13 @@
-class LoginModel {
+class AuthModel {
   String? message;
   UserData? data;
   bool? status;
   int? code;
 
-  LoginModel({this.message, this.data, this.status, this.code});
+  AuthModel({this.message, this.data, this.status, this.code});
 
-  factory LoginModel.fromJson(Map<String, dynamic> json) {
-    return LoginModel(
+  factory AuthModel.fromJson(Map<String, dynamic> json) {
+    return AuthModel(
       message: json['message'],
       data: json['data'] != null ? UserData.fromJson(json['data']) : null,
       status: json['status'],

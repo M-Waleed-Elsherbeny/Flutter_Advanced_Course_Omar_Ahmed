@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_course_omar_ahmed/core/di/get_it_config.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/helper/custom_loading.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/helper/custom_snack_bar.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/routing/app_router.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/style/colors/app_colors.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/style/fonts/app_text_style.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/helper/spacer.dart';
-import 'package:flutter_advanced_course_omar_ahmed/core/widgets/my_custom_button.dart';
-import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/logic/cubit/authentication_cubit.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/logic/cubit/login_cubit.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/auth/widgets/dont_have_an_account.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/auth/widgets/login_validation.dart';
-import 'package:flutter_advanced_course_omar_ahmed/features/auth/widgets/forgot_password.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/auth/widgets/signin_with_social_media.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,9 +18,13 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthenticationCubit, AuthenticationState>(
+    return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
+        if (state is LoginLoading) {
+          customLoading(context);
+        }
         if (state is LoginError) {
+          context.pop();
           customSnackBar(context, state.errorMessage);
         }
         if (state is LoginSuccess) {
@@ -33,9 +34,6 @@ class LoginScreen extends StatelessWidget {
             backgroundColor: AppColors.successColor,
           );
           context.pushReplacementNamed(AppRouter.homeScreen);
-        }
-        if (state is LoginLoading) {
-          customLoading(context);
         }
       },
       child: Scaffold(
@@ -62,19 +60,6 @@ class LoginScreen extends StatelessWidget {
                     ),
                     verticalSpace(36),
                     const LoginValidation(),
-                    verticalSpace(16),
-                    const ForgotPassword(),
-                    verticalSpace(33),
-                    MyCustomButton(
-                      onPressed: () {
-                        AuthenticationCubit cubit =
-                            getIt<AuthenticationCubit>();
-                        if (cubit.loginFormKey.currentState!.validate()) {
-                          cubit.login();
-                        }
-                      },
-                      text: "Login",
-                    ),
                     verticalSpace(46),
                     const SignInWithSocialMedia(),
                     verticalSpace(24),

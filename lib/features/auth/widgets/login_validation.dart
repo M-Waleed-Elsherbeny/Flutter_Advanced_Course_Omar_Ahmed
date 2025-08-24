@@ -4,23 +4,35 @@ import 'package:flutter_advanced_course_omar_ahmed/core/helper/password_and_emai
 import 'package:flutter_advanced_course_omar_ahmed/core/helper/spacer.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/style/colors/app_colors.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/widgets/custom_text_field.dart';
-import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/logic/cubit/authentication_cubit.dart';
+import 'package:flutter_advanced_course_omar_ahmed/core/widgets/my_custom_button.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/logic/cubit/login_cubit.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/auth/widgets/forgot_password.dart';
 
-class LoginValidation extends StatelessWidget {
+class LoginValidation extends StatefulWidget {
   const LoginValidation({
     super.key,
   });
 
-  // bool hasUpperLetter = false;
+  @override
+  State<LoginValidation> createState() => _LoginValidationState();
+}
+
+class _LoginValidationState extends State<LoginValidation> {
+  // login Controllers
+  TextEditingController loginEmailController = TextEditingController();
+  TextEditingController loginPasswordController = TextEditingController();
+
+  final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+  LoginCubit cubit = getIt<LoginCubit>();
+
   @override
   Widget build(BuildContext context) {
-    AuthenticationCubit cubit = getIt<AuthenticationCubit>();
     return Form(
-      key: cubit.loginFormKey,
+      key: loginFormKey,
       child: Column(
         children: [
           CustomTextField(
-            controller: cubit.emailController,
+            controller: loginEmailController,
             validator: (email) {
               if (email!.isEmpty) {
                 return "Please enter your email";
@@ -34,7 +46,7 @@ class LoginValidation extends StatelessWidget {
           ),
           verticalSpace(33),
           CustomTextField(
-            controller: cubit.passwordController,
+            controller: loginPasswordController,
             validator: (password) {
               if (password!.isEmpty) {
                 return "Please enter your password";
@@ -58,7 +70,7 @@ class LoginValidation extends StatelessWidget {
             ),
             labelText: "Password",
           ),
-          verticalSpace(15),
+          // verticalSpace(15),
           // PasswordValidation(
           //   hasANumber: hasANumber,
           //   hasCharacterLength: hasCharacterLength,
@@ -66,6 +78,21 @@ class LoginValidation extends StatelessWidget {
           //   hasSpecialCharacter: hasSpecialCharacter,
           //   hasUpperLetter: hasUpperLetter,
           // ),
+          verticalSpace(16),
+          const ForgotPassword(),
+          verticalSpace(30),
+          MyCustomButton(
+            onPressed: () {
+              LoginCubit cubit = getIt<LoginCubit>();
+              if (loginFormKey.currentState!.validate()) {
+                cubit.login(
+                  email: loginEmailController.text,
+                  password: loginPasswordController.text,
+                );
+              }
+            },
+            text: "Login",
+          ),
         ],
       ),
     );

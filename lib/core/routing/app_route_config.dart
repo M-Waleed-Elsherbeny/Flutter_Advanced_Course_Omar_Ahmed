@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/di/get_it_config.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/routing/app_router.dart';
-import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/logic/cubit/authentication_cubit.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/logic/cubit/login_cubit.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/logic/cubit/sign_up_cubit.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/auth/ui/login_screen.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/auth/ui/sign_up_screen.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/home/ui/home_screen.dart';
@@ -25,7 +26,7 @@ class AppRouteConfig {
         name: AppRouter.loginScreen,
         builder: (BuildContext context, GoRouterState state) {
           return BlocProvider(
-            create: (context) => getIt<AuthenticationCubit>(),
+            create: (context) => getIt<LoginCubit>(),
             child: const LoginScreen(),
           );
         },
@@ -35,7 +36,7 @@ class AppRouteConfig {
         name: AppRouter.signUpScreen,
         builder: (BuildContext context, GoRouterState state) {
           return BlocProvider(
-            create: (context) => getIt<AuthenticationCubit>(),
+            create: (context) => getIt<SignUpCubit>(),
             child: const SignUpScreen(),
           );
         },
@@ -47,8 +48,6 @@ class AppRouteConfig {
           return const HomeScreen();
         },
       ),
-      
-      
     ],
     errorBuilder: (context, state) => Scaffold(
       body: Center(child: Text('No route defined for ${state.fullPath}')),
