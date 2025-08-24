@@ -12,6 +12,8 @@ class PasswordValidation extends StatelessWidget {
     required this.hasANumber,
     required this.hasSpecialCharacter,
     required this.hasCharacterLength,
+    this.isSignUpScreen = false,
+    this.hasMatchedPassword,
   });
 
   final bool hasUpperLetter;
@@ -19,6 +21,8 @@ class PasswordValidation extends StatelessWidget {
   final bool hasANumber;
   final bool hasSpecialCharacter;
   final bool hasCharacterLength;
+  final bool isSignUpScreen;
+  final bool? hasMatchedPassword;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +36,9 @@ class PasswordValidation extends StatelessWidget {
             "At Least 1 Special Character", hasSpecialCharacter),
         buildRowPasswordValidation(
             "At Least 1 Uppercase Letter", hasUpperLetter),
+        isSignUpScreen && hasMatchedPassword != null
+            ? buildRowPasswordValidation("Matched Password", hasMatchedPassword!)
+            : const SizedBox.shrink(),
       ],
     );
   }

@@ -11,10 +11,12 @@ class DioHandler {
       dio!.options.baseUrl = ApiConstants.baseUrl;
       dio!.options.connectTimeout = timeout;
       dio!.options.receiveTimeout = timeout;
+      prettyDioLogger();
+      return dio;
+    } else {
+      prettyDioLogger();
       return dio;
     }
-    prettyDioLogger();
-    return dio;
   }
 
   static void prettyDioLogger() {
