@@ -6,12 +6,15 @@ import 'package:flutter_advanced_course_omar_ahmed/core/style/colors/app_colors.
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupGetIt();
   Bloc.observer = MyBlocObserver();
+  // To Fix Texts That are hidden in flutter_screenutil library
+  await ScreenUtil.ensureScreenSize();
   runApp(const DocApp());
 }
+// flutter run --release -t lib/main_development.dart --flavor development
 
 class DocApp extends StatelessWidget {
   const DocApp({super.key});

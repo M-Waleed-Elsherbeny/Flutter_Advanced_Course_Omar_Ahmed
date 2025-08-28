@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/routing/app_router.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/style/fonts/app_text_style.dart';
-import 'package:flutter_advanced_course_omar_ahmed/core/widgets/height_spacer.dart';
+import 'package:flutter_advanced_course_omar_ahmed/core/helper/spacer.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/widgets/my_custom_button.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/onboarding/widgets/doc_image_and_title.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/onboarding/widgets/doc_logo_and_name.dart';
@@ -21,7 +21,7 @@ class OnboardingScreen extends StatelessWidget {
         child: Column(
           children: [
             const DocLogoAndName(),
-            const HeightSpacer(height: 40),
+            verticalSpace(40),
             const DocImageAndTitle(),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30.w),
@@ -32,7 +32,7 @@ class OnboardingScreen extends StatelessWidget {
                     style: AppTextStyle.font13Grey400,
                     textAlign: TextAlign.center,
                   ),
-                  HeightSpacer(height: 32.h),
+                  verticalSpace(32),
                   MyCustomButton(
                     onPressed: () => context.go(AppRouter.loginScreen),
                     text: "Get Started",
