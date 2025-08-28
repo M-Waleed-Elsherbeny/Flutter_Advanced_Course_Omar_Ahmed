@@ -31,6 +31,7 @@ class CustomTextField extends StatelessWidget {
       obscureText: isPassword,
       obscuringCharacter: "*",
       decoration: InputDecoration(
+        isDense: true,
         contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16.r),

@@ -1,7 +1,9 @@
 class AppAssets {
+  // Paths
   static const String imagesPath = 'assets/images';
   static const String svgsPath = 'assets/svgs';
   static const String iconsPath = 'assets/icons';
+  static const String lottiePath = 'assets/lottie';
 
   // svgs
   static const String docLogoMain = "$svgsPath/doc_logo.svg";
@@ -13,4 +15,7 @@ class AppAssets {
 
   // images
   static const String onboardingDocImage = "$imagesPath/onboarding_doctor.png";
+
+  // lottie
+  static const String loading = "$lottiePath/Loading.json";
 }
