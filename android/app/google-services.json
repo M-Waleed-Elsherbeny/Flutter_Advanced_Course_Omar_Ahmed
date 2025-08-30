@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "961039999550",
+    "project_id": "docdoc-app-b6a80",
+    "storage_bucket": "docdoc-app-b6a80.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961039999550:android:d2ff273c886f0f85d8e76f",
+        "android_client_info": {
+          "package_name": "com.example.flutter_advanced_course_omar_ahmed"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiowAORv939wSh2Zl1FZdiIdIIha5xDfM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

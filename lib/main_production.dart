@@ -9,12 +9,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupGetIt();
+  
   Bloc.observer = MyBlocObserver();
   // To Fix Texts That are hidden in flutter_screenutil library
   await ScreenUtil.ensureScreenSize();
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
   runApp(const DocApp());
 }
 // flutter run --release -t lib/main_production.dart --flavor production
+// flutter build apk --flavor production -t lib/main_production.dart
+// flutter build apk --no-tree-shake-icons --flavor production -t lib/main_production.dart
 
 class DocApp extends StatelessWidget {
   const DocApp({super.key});
