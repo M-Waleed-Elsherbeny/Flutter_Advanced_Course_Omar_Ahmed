@@ -12,10 +12,10 @@ jobs:
       - name: Checkout My Repo Code # Name Of Step ==> Optional
         uses: actions/checkout@v2
 
-      - name: Install JDK Version 11 # Name Of Step ==> Optional
+      - name: Install JDK Version 17 # Name Of Step ==> Optional
         uses: actions/setup-java@v2
         with:
-          java-version: "11"
+          java-version: "17"
           distribution: "temurin"
 
       - name: Install Flutter # Name Of Step ==> Optional
@@ -28,7 +28,7 @@ jobs:
         with:
           ruby-version: "3.4.5"
           bundler-cache: true
-          working-directory: android  # To Install Ruby In Android Folder
+          working-directory: android # To Install Ruby In Android Folder
 
       - name: Build And Distribute App To Firebase #  Name Of Step ==> Optional
         env:
