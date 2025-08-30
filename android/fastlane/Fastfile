@@ -29,4 +29,10 @@ platform :android do
       release_notes: "First Fastlane Distribution",
     )
   end
+    lane :increment_version do
+    latest_release = firebase_app_distribution_get_latest_release(
+      app: "<your Firebase app ID>"
+    )
+    increment_version_code({ version_code: latest_release[:buildVersion].to_i + 1 })
+  end
 end
