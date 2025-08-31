@@ -33,7 +33,6 @@ platform :android do
     latest_release = firebase_app_distribution_get_latest_release(
       app: "1:961039999550:android:d2ff273c886f0f85d8e76f",
       firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"],
-      platform: "android",
     )
     increment_version_code({ version_code: latest_release[:buildVersion].to_i + 1 })
   end
