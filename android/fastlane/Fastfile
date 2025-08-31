@@ -29,6 +29,7 @@ platform :android do
       release_notes: "First Fastlane Distribution",
       debug: true
     )
+    
   end
     lane :increment_version do
     latest_release = firebase_app_distribution_get_latest_release(
