@@ -27,6 +27,7 @@ platform :android do
       android_artifact_path: "../build/app/outputs/flutter-apk/app-production-release.apk",
       testers: "m.elsherbeny100100@gmail.com",
       release_notes: "First Fastlane Distribution",
+      debug: true
     )
   end
     lane :increment_version do
