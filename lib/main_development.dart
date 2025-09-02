@@ -8,8 +8,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  setupGetIt();
   Bloc.observer = MyBlocObserver();
+  setupGetIt();
   // To Fix Texts That are hidden in flutter_screenutil library
   await ScreenUtil.ensureScreenSize();
   // await Firebase.initializeApp(

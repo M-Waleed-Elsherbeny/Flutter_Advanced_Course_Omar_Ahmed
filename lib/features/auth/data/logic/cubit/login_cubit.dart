@@ -1,8 +1,9 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/models/login_model.dart';
-import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/repo/login_repo.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/repo/auth_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'login_state.dart';
@@ -12,14 +13,17 @@ class LoginCubit extends Cubit<LoginState> {
   final AuthRepo loginRepo;
   AuthModel? authModel;
   bool showPassword = false;
+    // login Controllers
+  TextEditingController loginEmailController = TextEditingController();
+  TextEditingController loginPasswordController = TextEditingController();
 
   
-  Future<void> login({required String email, required String password,}) async {
+  Future<void> login() async {
     emit(LoginLoading());
     try {
       Response response = await loginRepo.login(data: {
-        "email": email,
-        "password": password,
+        "email": loginEmailController.text,
+        "password": loginPasswordController.text,
       });
       if (response.statusCode == 200) {
         authModel = AuthModel.fromJson(response.data);
