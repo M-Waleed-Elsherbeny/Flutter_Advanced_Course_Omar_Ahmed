@@ -21,7 +21,7 @@ class AlreadyHaveAccount extends StatelessWidget {
             onPressed: () => context.pop(),
             child: Text(
               "Login",
-              style: AppTextStyle.font13primaryColor400.copyWith(
+              style: AppTextStyle.font13PrimaryColor400.copyWith(
                 decoration: TextDecoration.underline,
                 decorationThickness: 1.5,
                 decorationColor: AppColors.primaryColorBlue,
