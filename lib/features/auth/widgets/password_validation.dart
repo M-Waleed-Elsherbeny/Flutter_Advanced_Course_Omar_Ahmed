@@ -37,7 +37,8 @@ class PasswordValidation extends StatelessWidget {
         buildRowPasswordValidation(
             "At Least 1 Uppercase Letter", hasUpperLetter),
         isSignUpScreen && hasMatchedPassword != null
-            ? buildRowPasswordValidation("Matched Password", hasMatchedPassword!)
+            ? buildRowPasswordValidation(
+                "Matched Password", hasMatchedPassword!)
             : const SizedBox.shrink(),
       ],
     );
@@ -48,7 +49,7 @@ Row buildRowPasswordValidation(String text, bool hasValidation) {
   return Row(
     children: [
       CircleAvatar(
-        backgroundColor: AppColors.blackColor,
+        backgroundColor: AppColors.blueBlackColor,
         radius: 3.w,
       ),
       horizontalSpace(8.w),

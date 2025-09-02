@@ -15,7 +15,17 @@ class AppAssets {
 
   // images
   static const String onboardingDocImage = "$imagesPath/onboarding_doctor.png";
+  static const String homeBackgroundBlueDoctor =
+      "$imagesPath/home_background_blue.png";
+  static const String homeDoctor = "$imagesPath/home_doctor.png";
+  static const String homeRadiology = "$imagesPath/Radiology.png";
+  static const String homePediatric = "$imagesPath/Pediatric.png";
+  static const String homeNeurologic = "$imagesPath/Neurologic.png";
+  static const String homeGeneral = "$imagesPath/General.png";
 
   // lottie
   static const String loading = "$lottiePath/Loading.json";
+
+  // icons
+  static const String alertNotification = "$iconsPath/notification.png";
 }

@@ -22,7 +22,7 @@ class DontHaveAnAccount extends StatelessWidget {
             onPressed: () => context.pushNamed(AppRouter.signUpScreen),
             child: Text(
               "Sign up",
-              style: AppTextStyle.font13primaryColor400.copyWith(
+              style: AppTextStyle.font13PrimaryColor400.copyWith(
                 decoration: TextDecoration.underline,
                 decorationThickness: 1.5,
                 decorationColor: AppColors.primaryColorBlue,
