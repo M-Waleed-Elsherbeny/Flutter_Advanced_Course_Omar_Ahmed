@@ -1,0 +1,41 @@
+name: Android Fastlane With Firebase Distribution
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Distribute_To_Firebase: # Name Of Job ==> Optional
+    runs-on: ubuntu-latest # For Run Android Fastlane
+    # runs-on: macos-latest ==> For Run iOS Fastlane
+    steps:
+      - name: Checkout My Repo Code # Name Of Step ==> Optional
+        uses: actions/checkout@v2
+
+      - name: Install JDK Version 17 # Name Of Step ==> Optional
+        uses: actions/setup-java@v2
+        with:
+          java-version: "17"
+          distribution: "temurin"
+
+      - name: Install Flutter # Name Of Step ==> Optional
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+
+      - name: Install Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4.5"
+          bundler-cache: true
+          working-directory: android # To Install Ruby In Android Folder
+
+      - name: Build And Distribute App To Firebase #  Name Of Step ==> Optional
+        env:
+          FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
+        run: |
+          bundle exec fastlane add_plugin increment_version_code
+          bundle exec fastlane android firebase_distribute
+        working-directory: android
+
+      
