@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/helper/spacer.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/home/widgets/doctor_recommendation_list_view.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/home/widgets/doctor_specialty_list_view.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/home/widgets/doctor_specialty_see_all.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/home/widgets/home_blue_container.dart';
@@ -27,9 +28,14 @@ class HomeScreen extends StatelessWidget {
               const HomeTobAppBar(),
               const HomeBlueContainer(),
               verticalSpace(24),
-              const DoctorSpecialtySeeAll(),
-              verticalSpace(16),
+              const DoctorSectionWithSeeAll(
+                sectionTitle: "Doctor Specialties",
+              ),
               const DoctorSpecialtyListView(),
+              const DoctorSectionWithSeeAll(
+                sectionTitle: "Recommendation Doctor",
+              ),
+              const DoctorRecommendationListView(),
             ],
           ),
         ),
