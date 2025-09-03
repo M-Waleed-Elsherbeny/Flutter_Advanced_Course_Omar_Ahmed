@@ -8,25 +8,23 @@ class DoctorSpecialtyItemsModel {
     required this.image,
     required this.title,
   });
-
-  List<DoctorSpecialtyItemsModel> doctorSpecialtyItems (){
-    return <DoctorSpecialtyItemsModel>[
-    DoctorSpecialtyItemsModel(
-      image: AppAssets.homeGeneral,
-      title: "General",
-    ),
-    DoctorSpecialtyItemsModel(
-      image: AppAssets.homeNeurologic,
-      title: "Neurologic",
-    ),
-    DoctorSpecialtyItemsModel(
-      image: AppAssets.homePediatric,
-      title: "Pediatric",
-    ),
-    DoctorSpecialtyItemsModel(
-      image: AppAssets.homeRadiology,
-      title: "Radiology",
-    ),
-  ];
-  }
 }
+
+List<DoctorSpecialtyItemsModel> doctorSpecialtyItemsList = [
+  DoctorSpecialtyItemsModel(
+    image: AppAssets.homeGeneral,
+    title: "General",
+  ),
+  DoctorSpecialtyItemsModel(
+    image: AppAssets.homeNeurologic,
+    title: "Neurologic",
+  ),
+  DoctorSpecialtyItemsModel(
+    image: AppAssets.homePediatric,
+    title: "Pediatric",
+  ),
+  DoctorSpecialtyItemsModel(
+    image: AppAssets.homeRadiology,
+    title: "Radiology",
+  ),
+];
