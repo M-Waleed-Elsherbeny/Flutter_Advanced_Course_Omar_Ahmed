@@ -5,6 +5,7 @@ import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/logic/cubi
 import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/logic/cubit/sign_up_cubit.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/auth/ui/login_screen.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/auth/ui/sign_up_screen.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/home/data/logic/cubit/home_cubit.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/home/ui/home_screen.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/onboarding/ui/onboarding_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,7 +46,10 @@ class AppRouteConfig {
         path: AppRouter.homeScreen,
         name: AppRouter.homeScreen,
         builder: (BuildContext context, GoRouterState state) {
-          return const HomeScreen();
+          return BlocProvider(
+            create: (context) => getIt<HomeCubit>(),
+            child: const HomeScreen(),
+          );
         },
       ),
     ],
