@@ -47,7 +47,7 @@ class AppRouteConfig {
         name: AppRouter.homeScreen,
         builder: (BuildContext context, GoRouterState state) {
           return BlocProvider(
-            create: (context) => getIt<HomeCubit>(),
+            create: (context) => getIt<HomeCubit>()..getSpecialtyDoctors(),
             child: const HomeScreen(),
           );
         },

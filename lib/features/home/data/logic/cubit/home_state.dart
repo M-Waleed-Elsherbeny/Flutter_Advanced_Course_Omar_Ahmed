@@ -7,8 +7,8 @@ final class HomeInitial extends HomeState {}
 final class SpecializationLoading extends HomeState {}
 
 final class SpecializationSuccess extends HomeState {
-  final DoctorSpecializationDataModel data;
-  SpecializationSuccess(this.data);
+  final DoctorSpecializationDataModel doctorSpecializationDataModel;
+  SpecializationSuccess(this.doctorSpecializationDataModel);
 }
 
 final class SpecializationError extends HomeState {

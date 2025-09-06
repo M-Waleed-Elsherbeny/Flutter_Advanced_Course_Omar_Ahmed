@@ -34,12 +34,15 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
+      listenWhen: (previous, current) =>
+          current is LoginLoading ||
+          current is LoginError ||
+          current is LoginSuccess,
       listener: (context, state) {
         if (state is LoginLoading) {
           customLoading(context);
         }
         if (state is LoginError) {
-          context.pop();
           customSnackBar(context, state.errorMessage);
         }
         if (state is LoginSuccess) {

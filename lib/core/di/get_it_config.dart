@@ -5,7 +5,6 @@ import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/logic/cubi
 import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/logic/cubit/sign_up_cubit.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/repo/auth_repo.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/home/data/logic/cubit/home_cubit.dart';
-import 'package:flutter_advanced_course_omar_ahmed/features/home/data/models/doctor_specialty_data_model.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/home/data/repo/specialty_doctors_api.dart';
 import 'package:get_it/get_it.dart';
 
@@ -18,11 +17,15 @@ void setupGetIt() {
 
   // Login repository And Cubit
   getIt.registerLazySingleton<AuthRepo>(() => AuthRepo(getIt<ApiServices>()));
-  getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt<AuthRepo>()));
+  getIt.registerLazySingleton<LoginCubit>(() => LoginCubit(getIt<AuthRepo>()));
 
   // SignUp repository And Cubit
-  getIt.registerFactory<SignUpCubit>(() => SignUpCubit(getIt<AuthRepo>()));
+  getIt
+      .registerLazySingleton<SignUpCubit>(() => SignUpCubit(getIt<AuthRepo>()));
+
   // Home repository And Cubit
-  getIt.registerLazySingleton<SpecialtyDoctorsRepo>(() => SpecialtyDoctorsRepo(apiServices: getIt<ApiServices>()));
-  getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt<SpecialtyDoctorsRepo>()));
+  getIt.registerLazySingleton<SpecialtyDoctorsRepo>(
+      () => SpecialtyDoctorsRepo(apiServices: getIt<ApiServices>()));
+  getIt.registerLazySingleton<HomeCubit>(
+      () => HomeCubit(getIt<SpecialtyDoctorsRepo>()));
 }

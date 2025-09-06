@@ -24,6 +24,7 @@ class AppAssets {
   static const String homePediatric = "$imagesPath/Pediatric.png";
   static const String homeNeurologic = "$imagesPath/Neurologic.png";
   static const String homeGeneral = "$imagesPath/General.png";
+  static const String doctorImage = "$imagesPath/doctors.png";
 
   // lottie
   static const String loading = "$lottiePath/Loading.json";
