@@ -22,7 +22,7 @@ class HomeBlueContainer extends StatelessWidget {
                 image: AssetImage(AppAssets.homeBackgroundBlueDoctor),
               ),
             ),
-            padding: EdgeInsets.only(top: 12.h, left: 18.w),
+            padding: EdgeInsets.only(top: 18.h, left: 18.w),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,9 +44,9 @@ class HomeBlueContainer extends StatelessWidget {
           ),
           Positioned(
               right: 15.w,
-              bottom: 2.h,
+              bottom: 12.h,
               child: Image.asset(
-                height: 197.h,
+                height: 170.h,
                 AppAssets.homeDoctor,
               ))
         ],
