@@ -12,10 +12,23 @@ class AppAssets {
   static const String google = "$svgsPath/google_logo.svg";
   static const String facebook = "$svgsPath/facebook_logo.svg";
   static const String apple = "$svgsPath/apple_logo.svg";
+  static const String reviewStar = "$svgsPath/review_star.svg";
 
   // images
   static const String onboardingDocImage = "$imagesPath/onboarding_doctor.png";
+  static const String recommendedDocImage = "$imagesPath/doctor.png";
+  static const String homeBackgroundBlueDoctor =
+      "$imagesPath/home_background_blue.png";
+  static const String homeDoctor = "$imagesPath/home_doctor.png";
+  static const String homeRadiology = "$imagesPath/Radiology.png";
+  static const String homePediatric = "$imagesPath/Pediatric.png";
+  static const String homeNeurologic = "$imagesPath/Neurologic.png";
+  static const String homeGeneral = "$imagesPath/General.png";
+  static const String doctorImage = "$imagesPath/doctors.png";
 
   // lottie
   static const String loading = "$lottiePath/Loading.json";
+
+  // icons
+  static const String alertNotification = "$iconsPath/notification.png";
 }

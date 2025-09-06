@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/models/login_model.dart';
-import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/repo/login_repo.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/repo/auth_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 part 'sign_up_state.dart';
 

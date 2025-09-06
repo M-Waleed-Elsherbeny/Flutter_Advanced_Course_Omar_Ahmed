@@ -3,4 +3,5 @@ class ApiConstants {
   static const String loginPath = "auth/login";
   static const String registerPath = "auth/register";
   static const String logoutPath = "auth/logout";
+  static const String allSpecializationPath = "specialization/index";
 }
