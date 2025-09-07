@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_course_omar_ahmed/core/Constants/shared_pref_constants.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/di/get_it_config.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/routing/app_router.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/logic/cubit/login_cubit.dart';
@@ -13,7 +14,7 @@ import 'package:go_router/go_router.dart';
 
 class AppRouteConfig {
   static final GoRouter router = GoRouter(
-    initialLocation: AppRouter.onboarding,
+    initialLocation: isUserLoggedIn ? AppRouter.homeScreen : AppRouter.loginScreen,
     routes: <RouteBase>[
       GoRoute(
         path: AppRouter.onboardingScreen,

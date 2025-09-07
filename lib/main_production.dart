@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_course_omar_ahmed/core/Constants/shared_pref_constants.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/di/get_it_config.dart';
+import 'package:flutter_advanced_course_omar_ahmed/core/helper/shared_pref_helper.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/networking/bloc_observer.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/routing/app_route_config.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/style/colors/app_colors.dart';
@@ -9,7 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupGetIt();
-  
+  isUserLoggedIn = await SharedPrefHelper.isUserLogin();
   Bloc.observer = MyBlocObserver();
   // To Fix Texts That are hidden in flutter_screenutil library
   await ScreenUtil.ensureScreenSize();

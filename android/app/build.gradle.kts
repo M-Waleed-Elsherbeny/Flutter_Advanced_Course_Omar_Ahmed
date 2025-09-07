@@ -53,7 +53,6 @@ android {
         }
         create("production") {
             dimension = "default"
-            //applicationIdSuffix = ".production"
             resValue(
                 type = "string",
                 name = "app_name",
