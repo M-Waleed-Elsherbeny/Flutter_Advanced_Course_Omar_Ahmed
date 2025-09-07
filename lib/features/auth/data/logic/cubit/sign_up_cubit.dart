@@ -1,5 +1,8 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
+import 'package:flutter_advanced_course_omar_ahmed/core/Constants/shared_pref_constants.dart';
+import 'package:flutter_advanced_course_omar_ahmed/core/extensions/string_extensions.dart';
+import 'package:flutter_advanced_course_omar_ahmed/core/helper/shared_pref_helper.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/models/login_model.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/repo/auth_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,8 +34,14 @@ class SignUpCubit extends Cubit<SignUpState> {
       log(response.statusCode.toString());
       if (response.statusCode == 200) {
         authModel = AuthModel.fromJson(response.data);
-        log(authModel!.data!.token.toString());
-        emit(SignUpSuccess());
+        String? token = authModel!.data!.token.toString();
+        if (!token.isNullOrEmpty()) {
+          await SharedPrefHelper.saveSecuredData(SharedPrefConstants.userToken, token);
+          log(authModel!.data!.token.toString());
+          emit(SignUpSuccess());
+        } else {
+          emit(SignUpError(errorMessage: "Something went wrong In Login"));
+        }
       }
     } catch (e) {
       log("Error in SignUp Cubit ====> $e");

@@ -68,6 +68,10 @@ dependencies:
 
   lottie: ^3.3.1
   firebase_core: ^4.0.0
+  # for reading and writing simple key-value pairs.
+  shared_preferences: ^2.5.3
+  # Secure Storage provides API to store data in secure storage.
+  flutter_secure_storage: ^9.2.4
 
 dev_dependencies:
   flutter_test:

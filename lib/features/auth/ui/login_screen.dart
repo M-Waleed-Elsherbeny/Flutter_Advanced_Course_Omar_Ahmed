@@ -43,6 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
           customLoading(context);
         }
         if (state is LoginError) {
+          context.pop();
           customSnackBar(context, state.errorMessage);
         }
         if (state is LoginSuccess) {
