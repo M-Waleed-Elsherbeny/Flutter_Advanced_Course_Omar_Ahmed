@@ -31,7 +31,8 @@ jobs:
           working-directory: android # To Install Ruby In Android Folder
 
       - name: Get Decode base64 secrets
-        run: echo $SECRETS_FILE_CONTENT | base64 -d > lib/core/Constants/api_constants.dart
+        run: echo "$SECRETS_FILE_CONTENT" | base64 -d > lib/core/Constants/api_constants.dart
+        shell: bash
         env:
           # This is the content of base64 lib/core/Constants/api_constants.dart
           SECRETS_FILE_CONTENT: ${{ secrets.SECRETS_FILE_CONTENT }} #  Name Of Step ==> Optional
