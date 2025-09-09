@@ -3,8 +3,8 @@ import 'package:flutter_advanced_course_omar_ahmed/core/routing/app_router.dart'
 import 'package:flutter_advanced_course_omar_ahmed/core/style/fonts/app_text_style.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/helper/spacer.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/widgets/my_custom_button.dart';
-import 'package:flutter_advanced_course_omar_ahmed/features/onboarding/widgets/doc_image_and_title.dart';
-import 'package:flutter_advanced_course_omar_ahmed/features/onboarding/widgets/doc_logo_and_name.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/onboarding/view/widgets/doc_image_and_title.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/onboarding/view/widgets/doc_logo_and_name.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 

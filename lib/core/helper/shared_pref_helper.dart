@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_course_omar_ahmed/core/helper/shared_pref_constants.dart';
+import 'package:flutter_advanced_course_omar_ahmed/core/Constants/shared_pref_constants.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/extensions/string_extensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -68,7 +68,7 @@ class SharedPrefHelper {
   /// If the user token is null, then the user is not logged in.
   static Future<bool> isUserLogin() async {
     await SharedPreferences.getInstance();
-    String? token = await getString(SharedPrefConstants.userToken);
+    String? token = await getSecuredData(SharedPrefConstants.userToken);
     debugPrint("SharedPrefHelper isUserLogin token: $token");
     if (token.isNullOrEmpty()) return false;
     return true;
