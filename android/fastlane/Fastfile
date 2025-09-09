@@ -19,21 +19,22 @@ platform :android do
   desc "Lanes for firebase distribution app"
   lane :firebase_distribute do
     sh "flutter clean"
+    sh "flutter pub get"
     sh "flutter build apk --no-tree-shake-icons --flavor production -t lib/main_production.dart"
     firebase_app_distribution(
-      app: "1:961039999550:android:d2ff273c886f0f85d8e76f",
+      app: ENV["APP_ID"],
       firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"],
       android_artifact_type: "APK",
       android_artifact_path: "../build/app/outputs/flutter-apk/app-production-release.apk",
       testers: "m.elsherbeny100100@gmail.com",
-      release_notes: "First Fastlane Distribution",
+      release_notes: "Finishing Home Screen With APIS",
       debug: true
     )
     
   end
     lane :increment_version do
     latest_release = firebase_app_distribution_get_latest_release(
-      app: "1:961039999550:android:d2ff273c886f0f85d8e76f",
+      app: ENV["APP_ID"],
       firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"],
     )
     increment_version_code({ version_code: latest_release[:buildVersion].to_i + 1 })
