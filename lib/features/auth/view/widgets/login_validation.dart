@@ -3,7 +3,7 @@ import 'package:flutter_advanced_course_omar_ahmed/core/helper/password_and_emai
 import 'package:flutter_advanced_course_omar_ahmed/core/helper/spacer.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/style/colors/app_colors.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/widgets/custom_text_field.dart';
-import 'package:flutter_advanced_course_omar_ahmed/features/auth/widgets/forgot_password.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/auth/view/widgets/forgot_password.dart';
 
 class LoginValidation extends StatelessWidget {
   const LoginValidation({

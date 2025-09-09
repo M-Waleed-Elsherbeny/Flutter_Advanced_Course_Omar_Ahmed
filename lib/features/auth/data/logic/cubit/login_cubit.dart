@@ -23,6 +23,8 @@ class LoginCubit extends Cubit<LoginState> {
     try {
       String? userToken =
           await SharedPrefHelper.getSecuredData(SharedPrefConstants.userToken);
+      log("userToken $userToken");
+
       if (!userToken.isNullOrEmpty()) {
         Response response = await loginRepo.login(
           data: {
@@ -33,7 +35,15 @@ class LoginCubit extends Cubit<LoginState> {
         );
         if (response.statusCode == 200) {
           authModel = AuthModel.fromJson(response.data);
-
+          String? newToken = authModel!.data!.token.toString();
+          if (!newToken.isNullOrEmpty() && newToken != userToken) {
+            await SharedPrefHelper.saveSecuredData(
+                SharedPrefConstants.userToken, newToken);
+            log("newToken $newToken");
+            emit(LoginSuccess());
+          } else {
+            emit(LoginError(errorMessage: "Something went wrong In Login"));
+          }
           emit(LoginSuccess());
         } else {
           emit(LoginError(errorMessage: "Something went wrong In Login"));

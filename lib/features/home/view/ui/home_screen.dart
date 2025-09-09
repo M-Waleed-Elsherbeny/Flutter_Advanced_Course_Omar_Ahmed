@@ -3,11 +3,11 @@ import 'package:flutter_advanced_course_omar_ahmed/core/helper/spacer.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/home/data/logic/cubit/home_cubit.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/home/data/logic/cubit/home_state.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/home/data/models/doctor_specialty_data_model.dart';
-import 'package:flutter_advanced_course_omar_ahmed/features/home/widgets/doctor_recommendation_list_view.dart';
-import 'package:flutter_advanced_course_omar_ahmed/features/home/widgets/doctor_specialty_list_view.dart';
-import 'package:flutter_advanced_course_omar_ahmed/features/home/widgets/doctor_specialty_see_all.dart';
-import 'package:flutter_advanced_course_omar_ahmed/features/home/widgets/home_blue_container.dart';
-import 'package:flutter_advanced_course_omar_ahmed/features/home/widgets/home_tob_app_bar.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/home/view/widgets/doctor_recommendation_list_view.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/home/view/widgets/doctor_specialty_list_view.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/home/view/widgets/doctor_specialty_see_all.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/home/view/widgets/home_blue_container.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/home/view/widgets/home_tob_app_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -48,19 +48,19 @@ class HomeScreen extends StatelessWidget {
                   return Text(state.message);
                 }
                 if (state is SpecializationSuccess) {
-                  List<Data> data = state.doctorSpecializationDataModel.allData;
-                  int index = data.length - 1;
+                  List<Data> allData = state.doctorSpecializationDataModel.allData;
+                  int index = allData.length - 1;
                   return Expanded(
                     child: Column(
                       children: [
                         DoctorSpecialtyListView(
-                          doctorSpecialtyData: data,
+                          doctorSpecialtyData: allData,
                         ),
                         const DoctorSectionWithSeeAll(
                           sectionTitle: "Recommendation Doctor",
                         ),
                         DoctorRecommendationListView(
-                          doctorModel: data[index].doctors,
+                          doctorModel: allData[index].doctors,
                         ),
                       ],
                     ),

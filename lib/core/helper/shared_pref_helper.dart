@@ -68,7 +68,7 @@ class SharedPrefHelper {
   /// If the user token is null, then the user is not logged in.
   static Future<bool> isUserLogin() async {
     await SharedPreferences.getInstance();
-    String? token = await getString(SharedPrefConstants.userToken);
+    String? token = await getSecuredData(SharedPrefConstants.userToken);
     debugPrint("SharedPrefHelper isUserLogin token: $token");
     if (token.isNullOrEmpty()) return false;
     return true;
