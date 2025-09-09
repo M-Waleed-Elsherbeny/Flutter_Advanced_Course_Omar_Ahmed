@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_advanced_course_omar_ahmed/core/networking/api_constants.dart';
+import 'package:flutter_advanced_course_omar_ahmed/core/Constants/api_constants.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioHandler {
@@ -14,7 +14,6 @@ class DioHandler {
       prettyDioLogger();
       return dio;
     } else {
-      prettyDioLogger();
       return dio;
     }
   }

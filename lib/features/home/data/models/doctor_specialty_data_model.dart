@@ -1,13 +1,13 @@
 class DoctorSpecializationDataModel {
-  List<Data> data;
+  List<Data> allData;
 
   DoctorSpecializationDataModel({
-    required this.data,
+    required this.allData,
   });
 
   factory DoctorSpecializationDataModel.fromJson(Map<String, dynamic> json) =>
       DoctorSpecializationDataModel(
-        data: List<Data>.from(json["data"].map((x) => Data.fromJson(x))),
+        allData: List<Data>.from(json["data"].map((x) => Data.fromJson(x))),
       );
 }
 
