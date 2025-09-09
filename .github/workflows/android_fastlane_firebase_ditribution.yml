@@ -30,11 +30,11 @@ jobs:
           bundler-cache: true
           working-directory: android # To Install Ruby In Android Folder
 
-      - name: Get Decode base64 secrets
-        run: echo "$SECRETS_FILE_CONTENT" | base64 -d > lib/core/Constants/api_constants.dart
-        env:
-          # This is the content of base64 lib/core/Constants/api_constants.dart
-          SECRETS_FILE_CONTENT: ${{ secrets.SECRETS_FILE_CONTENT }} #  Name Of Step ==> Optional
+      # - name: Get Decode base64 secrets
+      #   run: echo "$SECRETS_FILE_CONTENT" | base64 -d > lib/core/Constants/api_constants.dart
+      #   env:
+      #     # This is the content of base64 lib/core/Constants/api_constants.dart
+      #     SECRETS_FILE_CONTENT: ${{ secrets.SECRETS_FILE_CONTENT }} #  Name Of Step ==> Optional
       - name: Build And Distribute App To Firebase Fastlane
         env:
           FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
