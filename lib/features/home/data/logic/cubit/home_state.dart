@@ -1,17 +1,21 @@
-import 'package:flutter_advanced_course_omar_ahmed/features/home/data/models/doctor_specialty_data_model.dart';
-
 sealed class HomeState {}
 
 final class HomeInitial extends HomeState {}
 
 final class SpecializationLoading extends HomeState {}
 
-final class SpecializationSuccess extends HomeState {
-  final DoctorSpecializationDataModel doctorSpecializationDataModel;
-  SpecializationSuccess(this.doctorSpecializationDataModel);
-}
+final class SpecializationSuccess extends HomeState {}
 
 final class SpecializationError extends HomeState {
-  final String message;
-  SpecializationError(this.message);
+  final String errorMessage;
+  SpecializationError(this.errorMessage);
+}
+
+final class RefreshToken extends HomeState {}
+
+final class GetSpecialtyDoctorsSuccess extends HomeState {}
+
+final class GetSpecialtyDoctorsError extends HomeState {
+  final String errorMessage;
+  GetSpecialtyDoctorsError(this.errorMessage);
 }

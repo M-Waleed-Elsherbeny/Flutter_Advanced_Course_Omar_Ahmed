@@ -4,3 +4,8 @@ extension StringExtensions on String? {
   /// Returns [true] if the string is null or empty, and [false] otherwise.
   bool isNullOrEmpty() => this == null || this == "";
 }
+
+extension ListExtensions<T> on List<T>? {
+  /// Returns [true] if the list is null or empty, and [false] otherwise.
+  bool isNullOrEmpty() => this == null || this == [];
+}
