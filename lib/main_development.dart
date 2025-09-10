@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/Constants/shared_pref_constants.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/di/get_it_config.dart';
@@ -13,6 +15,7 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   setupGetIt();
   isUserLoggedIn = await SharedPrefHelper.isUserLogin();
+  log("isUserLoggedIn $isUserLoggedIn");
   // To Fix Texts That are hidden in flutter_screenutil library
   await ScreenUtil.ensureScreenSize();
   // await Firebase.initializeApp(

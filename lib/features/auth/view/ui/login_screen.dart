@@ -8,9 +8,9 @@ import 'package:flutter_advanced_course_omar_ahmed/core/style/fonts/app_text_sty
 import 'package:flutter_advanced_course_omar_ahmed/core/helper/spacer.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/widgets/my_custom_button.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/logic/cubit/login_cubit.dart';
-import 'package:flutter_advanced_course_omar_ahmed/features/auth/widgets/dont_have_an_account.dart';
-import 'package:flutter_advanced_course_omar_ahmed/features/auth/widgets/login_validation.dart';
-import 'package:flutter_advanced_course_omar_ahmed/features/auth/widgets/signin_with_social_media.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/auth/view/widgets/dont_have_an_account.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/auth/view/widgets/login_validation.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/auth/view/widgets/signin_with_social_media.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';

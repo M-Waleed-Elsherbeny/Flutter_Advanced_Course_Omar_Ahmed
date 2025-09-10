@@ -6,7 +6,7 @@ import 'package:flutter_advanced_course_omar_ahmed/core/style/colors/app_colors.
 import 'package:flutter_advanced_course_omar_ahmed/core/widgets/custom_text_field.dart';
 import 'package:flutter_advanced_course_omar_ahmed/core/widgets/my_custom_button.dart';
 import 'package:flutter_advanced_course_omar_ahmed/features/auth/data/logic/cubit/sign_up_cubit.dart';
-import 'package:flutter_advanced_course_omar_ahmed/features/auth/widgets/password_validation.dart';
+import 'package:flutter_advanced_course_omar_ahmed/features/auth/view/widgets/password_validation.dart';
 
 class SignUpValidation extends StatefulWidget {
   const SignUpValidation({super.key});
